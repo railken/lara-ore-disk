@@ -60,6 +60,4 @@ class DiskTest extends BaseTest
     {
         $this->commonTest(new DiskManager(), $this->getParameters());
     }
-
-
 }

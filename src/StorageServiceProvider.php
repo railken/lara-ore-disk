@@ -40,7 +40,6 @@ class StorageServiceProvider extends ServiceProvider
      */
     public function boot(\Illuminate\Routing\Router $router)
     {
-    
         $this->loadMigrationsFrom(__DIR__.'/Resources/Migrations');
 
         if (Schema::hasTable('disks')) {

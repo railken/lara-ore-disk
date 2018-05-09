@@ -81,7 +81,6 @@ class FileTest extends BaseTest
 
     public function upload($driver, $access)
     {
-
         $result = (new DiskManager())->create($this->getDiskParameters($driver));
         $this->assertEquals(true, $result->ok());
 
@@ -89,7 +88,8 @@ class FileTest extends BaseTest
 
         $manager = $this->getManager();
 
-        $result = (new FileManager())->create($this->getParameters()
+        $result = (new FileManager())->create(
+            $this->getParameters()
             ->set('access', $access)
         );
 
@@ -102,7 +102,6 @@ class FileTest extends BaseTest
             $response = $client->request('GET', $resource->getReadable());
             $this->assertEquals(200, $response->getStatusCode());
         }
-
     }
 
     public function testUpload()

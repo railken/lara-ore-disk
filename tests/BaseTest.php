@@ -3,7 +3,7 @@
 namespace Railken\LaraOre\Storage\Tests;
 
 abstract class BaseTest extends \Orchestra\Testbench\TestCase
-{ 
+{
     protected function getPackageProviders($app)
     {
         return [

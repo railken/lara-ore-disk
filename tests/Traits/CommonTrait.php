@@ -5,8 +5,7 @@ namespace Railken\LaraOre\Storage\Tests\Traits;
 trait CommonTrait
 {
     public function commonTest($manager, $parameters)
-    {   
-        
+    {
         $result = $manager->create($parameters);
         $this->assertEquals(true, $result->ok());
 
@@ -22,6 +21,5 @@ trait CommonTrait
 
         $result = $manager->remove($resource);
         $this->assertEquals(true, $result->ok());
-
     }
 }
