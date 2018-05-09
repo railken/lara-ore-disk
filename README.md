@@ -25,34 +25,35 @@ use Railken\LaraOre\Storage\File\FileManager;
 
 $dm = new DiskManager();
 $result = $dm->create([
-	'name' => 'My storage',
-	'driver' => 's3',
-	'config' => [
-		'key' => '...',
-		'secret' => '...'
-		'bucket' => '...'
-		'region' => '...'
-		'url' => '...'
-	]
-	'enabled' => 1
+    'name' => 'My storage',
+    'driver' => 's3',
+    'config' => [
+        'key' => '...',
+        'secret' => '...'
+        'bucket' => '...'
+        'region' => '...'
+        'url' => '...'
+    ]
+    'enabled' => 1
 ]);
 
-$result->ok(); // ok;
+if (!$result->ok()) {
+    print_r($result->getSimpleErrors());
+}
 
 $disk = $resource->getResource();
 
 
-
 $fm = new FileManager();
 $result = $fm->create([
-	'disk' => $disk,
-	'access' => 'private',
-	'content' => 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='
+    'disk' => $disk,
+    'access' => 'private',
+    'content' => 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='
 ]);
 
 if ($result->ok()) {
 
-	echo $result->getResource()->getReadable(); // http://s3....
+    echo $result->getResource()->getReadable(); // http://s3....
 
 }
 
