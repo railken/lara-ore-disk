@@ -1,20 +1,9 @@
 <?php
 
-namespace Railken\LaraOre\Storage\Tests\Admin;
-use Illuminate\Contracts\Debug\ExceptionHandler;
-use Illuminate\Foundation\Exceptions\Handler as BaseHandler;
-
+namespace Railken\LaraOre\Storage\Tests;
 
 abstract class BaseTest extends \Orchestra\Testbench\TestCase
 { 
-
-    protected function getPackageAliases($app)
-    {
-        return [
-            'Twig' => \TwigBridge\Facade\Twig::class,
-        ];
-    }
-
     protected function getPackageProviders($app)
     {
         return [
@@ -30,7 +19,7 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
      */
     public function setUp()
     {
-        $dotenv = new \Dotenv\Dotenv(__DIR__.'/../..', '.env');
+        $dotenv = new \Dotenv\Dotenv(__DIR__.'/..', '.env');
         $dotenv->load();
 
         parent::setUp();

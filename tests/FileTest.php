@@ -1,6 +1,6 @@
 <?php
 
-namespace Railken\LaraOre\Storage\Tests\Admin;
+namespace Railken\LaraOre\Storage\Tests;
 
 use Railken\Bag;
 use Railken\LaraOre\Storage\File\FileManager;
