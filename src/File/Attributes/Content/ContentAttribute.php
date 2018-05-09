@@ -77,16 +77,17 @@ class ContentAttribute extends BaseAttribute
         $filename = $entity->path;
         $content = $this->decode('base64_decode', $parameters->get('content'));
 
-        if (!$entity->ext) {
-            Storage::disk('local')->put($filename, $content);
-            $mimetype = Storage::disk('local')->mimeType($filename);
-            $ext = array_search($mimetype, [
-                "png"           =>  "image/png",
-                "jpeg"          =>  "image/jpeg",
-                "jpg"           =>  "image/jpeg",
-            ]);
-            Storage::disk('local')->delete($filename);
-        }
+        $ext = $entity->ext;
+
+        Storage::disk('local')->put($filename, $content);
+        $mimetype = Storage::disk('local')->mimeType($filename);
+        $ext = array_search($mimetype, [
+            "png"           =>  "image/png",
+            "jpeg"          =>  "image/jpeg",
+            "jpg"           =>  "image/jpeg",
+        ]);
+        Storage::disk('local')->delete($filename);
+
         $path = $filename.'.'.$ext;
         $entity->ext = $ext;
         $entity->path = $path;

@@ -9,6 +9,7 @@ use Railken\Laravel\Manager\Contracts\EntityContract;
  * @property public $storage
  * @property public $status
  * @property public $type
+ * @property public $path
  * @property public $disk
  * @property public $checksum
  * @property public $access

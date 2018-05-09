@@ -16,7 +16,7 @@ class FileSerializer extends ModelSerializer
      * @param EntityContract $entity
      * @param Collection     $select
      *
-     * @return array
+     * @return Bag
      */
     public function serialize(EntityContract $entity, Collection $select = null)
     {
@@ -30,9 +30,6 @@ class FileSerializer extends ModelSerializer
 
 
         $bag->set('readable', $entity->getReadable());
-
-
-
 
         return $bag;
     }

@@ -16,7 +16,7 @@ following command:
 composer require railken/lara-ore-storage
 ```
 
-## Usage
+## Simple Usage
 
 ```php
 use Railken\LaraOre\Storage\Disk\DiskManager;
