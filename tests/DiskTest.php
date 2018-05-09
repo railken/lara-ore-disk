@@ -11,7 +11,7 @@ use Railken\LaraOre\Storage\Disk\DiskManager;
  */
 class DiskTest extends BaseTest
 {
-    use Traits\ApiTestCommonTrait;
+    use Traits\CommonTrait;
     
     /**
      * Retrieve basic url.

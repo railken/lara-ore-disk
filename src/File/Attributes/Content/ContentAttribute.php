@@ -74,6 +74,10 @@ class ContentAttribute extends BaseAttribute
      */
     public function fill(EntityContract $entity, ParameterBagContract $parameters)
     {
+        if (!$entity->getStorage()) {
+            return;
+        }
+        
         $filename = $entity->path;
         $content = $this->decode('base64_decode', $parameters->get('content'));
 

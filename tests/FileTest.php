@@ -12,7 +12,7 @@ use Railken\LaraOre\Storage\Disk\DiskManager;
  */
 class FileTest extends BaseTest
 {
-    use Traits\ApiTestCommonTrait;
+    use Traits\CommonTrait;
 
     /**
      * Retrieve basic url.
@@ -35,6 +35,8 @@ class FileTest extends BaseTest
         $bag->set('content', 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==');
         $bag->set('type', 'uhm');
         $bag->set('access', 'private');
+
+        $bag->set('disk', (new DiskManager())->create($this->getDiskParameters('s3'))->getResource());
 
         return $bag;
     }
@@ -65,11 +67,16 @@ class FileTest extends BaseTest
 
         $bag = new Bag();
         $bag->set('driver', $driver);
-        $bag->set('name', 'a common name');
+        $bag->set('name', microtime(true));
         $bag->set('enabled', 1);
         $bag->set('config', $drivers[$driver]);
 
         return $bag;
+    }
+
+    public function testSuccessCommon()
+    {
+        $this->commonTest(new FileManager(), $this->getParameters());
     }
 
     public function upload($driver, $access)
@@ -83,7 +90,6 @@ class FileTest extends BaseTest
         $manager = $this->getManager();
 
         $result = (new FileManager())->create($this->getParameters()
-            ->set('disk_id', $resource->id)
             ->set('access', $access)
         );
 
