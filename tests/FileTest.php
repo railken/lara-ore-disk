@@ -67,7 +67,7 @@ class FileTest extends BaseTest
 
         $bag = new Bag();
         $bag->set('driver', $driver);
-        $bag->set('name', microtime(true));
+        $bag->set('name', 'NAME-' . microtime(true));
         $bag->set('enabled', 1);
         $bag->set('config', $drivers[$driver]);
 
